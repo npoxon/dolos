@@ -266,15 +266,15 @@ result_large_err = "allow"
 # (this patch). Remove once a pallas release with the fix is out and this
 # crate's pallas pin is bumped past it.
 [patch.crates-io]
-pallas = { git = "https://github.com/npoxon/pallas", rev = "9c8ab1e428c96475c25e877683eaefd1cd080594" }
-pallas-addresses = { git = "https://github.com/npoxon/pallas", rev = "9c8ab1e428c96475c25e877683eaefd1cd080594" }
-pallas-codec = { git = "https://github.com/npoxon/pallas", rev = "9c8ab1e428c96475c25e877683eaefd1cd080594" }
-pallas-configs = { git = "https://github.com/npoxon/pallas", rev = "9c8ab1e428c96475c25e877683eaefd1cd080594" }
-pallas-crypto = { git = "https://github.com/npoxon/pallas", rev = "9c8ab1e428c96475c25e877683eaefd1cd080594" }
-pallas-hardano = { git = "https://github.com/npoxon/pallas", rev = "9c8ab1e428c96475c25e877683eaefd1cd080594" }
-pallas-network = { git = "https://github.com/npoxon/pallas", rev = "9c8ab1e428c96475c25e877683eaefd1cd080594" }
-pallas-primitives = { git = "https://github.com/npoxon/pallas", rev = "9c8ab1e428c96475c25e877683eaefd1cd080594" }
-pallas-traverse = { git = "https://github.com/npoxon/pallas", rev = "9c8ab1e428c96475c25e877683eaefd1cd080594" }
-pallas-txbuilder = { git = "https://github.com/npoxon/pallas", rev = "9c8ab1e428c96475c25e877683eaefd1cd080594" }
-pallas-utxorpc = { git = "https://github.com/npoxon/pallas", rev = "9c8ab1e428c96475c25e877683eaefd1cd080594" }
-pallas-validate = { git = "https://github.com/npoxon/pallas", rev = "9c8ab1e428c96475c25e877683eaefd1cd080594" }
+pallas = { git = "https://github.com/npoxon/pallas", rev = "a2d11aa2cbfc78db2cb7c0ae8782ff172696c931" }
+pallas-addresses = { git = "https://github.com/npoxon/pallas", rev = "a2d11aa2cbfc78db2cb7c0ae8782ff172696c931" }
+pallas-codec = { git = "https://github.com/npoxon/pallas", rev = "a2d11aa2cbfc78db2cb7c0ae8782ff172696c931" }
+pallas-configs = { git = "https://github.com/npoxon/pallas", rev = "a2d11aa2cbfc78db2cb7c0ae8782ff172696c931" }
+pallas-crypto = { git = "https://github.com/npoxon/pallas", rev = "a2d11aa2cbfc78db2cb7c0ae8782ff172696c931" }
+pallas-hardano = { git = "https://github.com/npoxon/pallas", rev = "a2d11aa2cbfc78db2cb7c0ae8782ff172696c931" }
+pallas-network = { git = "https://github.com/npoxon/pallas", rev = "a2d11aa2cbfc78db2cb7c0ae8782ff172696c931" }
+pallas-primitives = { git = "https://github.com/npoxon/pallas", rev = "a2d11aa2cbfc78db2cb7c0ae8782ff172696c931" }
+pallas-traverse = { git = "https://github.com/npoxon/pallas", rev = "a2d11aa2cbfc78db2cb7c0ae8782ff172696c931" }
+pallas-txbuilder = { git = "https://github.com/npoxon/pallas", rev = "a2d11aa2cbfc78db2cb7c0ae8782ff172696c931" }
+pallas-utxorpc = { git = "https://github.com/npoxon/pallas", rev = "a2d11aa2cbfc78db2cb7c0ae8782ff172696c931" }
+pallas-validate = { git = "https://github.com/npoxon/pallas", rev = "a2d11aa2cbfc78db2cb7c0ae8782ff172696c931" }
