@@ -199,7 +199,7 @@ readme = "README.md"
 authors = ["TxPipe <hello@txpipe.io>"]
 
 [workspace.dependencies]
-pallas = { version = "1.0.0", features = ["hardano", "phase2", "unstable"] }
+pallas = { version = "1.2.0", features = ["hardano", "phase2", "unstable"] }
 # pallas = { git = "https://github.com/txpipe/pallas.git", rev = "a7b5a86", features = ["hardano", "phase2", "unstable"] }
 # pallas = { path = "../pallas/pallas", features = ["hardano", "phase2", "unstable"] }
 
@@ -257,23 +257,3 @@ pre-release-hook = [
 [lints.clippy]
 result_large_err = "allow"
 
-# Hotfix: ScriptNOfK's threshold is CBOR-decoded as u32 in released pallas
-# (v1.1.1), but the ledger CDDL has typed it int64 since Shelley. A negative
-# threshold (valid, on-chain, trivially satisfied) fails to decode at all,
-# which is what stopped sync on preprod at block 5184855. Fixed on pallas
-# main via github.com/txpipe/pallas/pull/803, merged 2026-09-16, but not yet
-# in a published release. Remove this patch once pallas cuts a release past
-# that commit and this crate's pallas pin is bumped to it.
-[patch.crates-io]
-pallas = { git = "https://github.com/txpipe/pallas", rev = "975974908bf3e9aa0c1ed7915fd5c9643a2f3964" }
-pallas-addresses = { git = "https://github.com/txpipe/pallas", rev = "975974908bf3e9aa0c1ed7915fd5c9643a2f3964" }
-pallas-codec = { git = "https://github.com/txpipe/pallas", rev = "975974908bf3e9aa0c1ed7915fd5c9643a2f3964" }
-pallas-configs = { git = "https://github.com/txpipe/pallas", rev = "975974908bf3e9aa0c1ed7915fd5c9643a2f3964" }
-pallas-crypto = { git = "https://github.com/txpipe/pallas", rev = "975974908bf3e9aa0c1ed7915fd5c9643a2f3964" }
-pallas-hardano = { git = "https://github.com/txpipe/pallas", rev = "975974908bf3e9aa0c1ed7915fd5c9643a2f3964" }
-pallas-network = { git = "https://github.com/txpipe/pallas", rev = "975974908bf3e9aa0c1ed7915fd5c9643a2f3964" }
-pallas-primitives = { git = "https://github.com/txpipe/pallas", rev = "975974908bf3e9aa0c1ed7915fd5c9643a2f3964" }
-pallas-traverse = { git = "https://github.com/txpipe/pallas", rev = "975974908bf3e9aa0c1ed7915fd5c9643a2f3964" }
-pallas-txbuilder = { git = "https://github.com/txpipe/pallas", rev = "975974908bf3e9aa0c1ed7915fd5c9643a2f3964" }
-pallas-utxorpc = { git = "https://github.com/txpipe/pallas", rev = "975974908bf3e9aa0c1ed7915fd5c9643a2f3964" }
-pallas-validate = { git = "https://github.com/txpipe/pallas", rev = "975974908bf3e9aa0c1ed7915fd5c9643a2f3964" }
