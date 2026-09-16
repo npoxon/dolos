@@ -256,3 +256,25 @@ pre-release-hook = [
 
 [lints.clippy]
 result_large_err = "allow"
+
+# Hotfix: ScriptNOfK's threshold is CBOR-decoded as u32 in released pallas,
+# but the ledger CDDL has typed it int64 since Allegra. A negative threshold
+# (valid, on-chain, trivially satisfied) fails to decode at all, which is
+# what stopped sync on preprod at block 5184855. Fix pending upstream at
+# https://github.com/txpipe/pallas/pull/802 (base) and
+# https://github.com/npoxon/pallas/tree/fix/native-script-n-of-k-signed-threshold
+# (this patch). Remove once a pallas release with the fix is out and this
+# crate's pallas pin is bumped past it.
+[patch.crates-io]
+pallas = { git = "https://github.com/npoxon/pallas", rev = "9c8ab1e428c96475c25e877683eaefd1cd080594" }
+pallas-addresses = { git = "https://github.com/npoxon/pallas", rev = "9c8ab1e428c96475c25e877683eaefd1cd080594" }
+pallas-codec = { git = "https://github.com/npoxon/pallas", rev = "9c8ab1e428c96475c25e877683eaefd1cd080594" }
+pallas-configs = { git = "https://github.com/npoxon/pallas", rev = "9c8ab1e428c96475c25e877683eaefd1cd080594" }
+pallas-crypto = { git = "https://github.com/npoxon/pallas", rev = "9c8ab1e428c96475c25e877683eaefd1cd080594" }
+pallas-hardano = { git = "https://github.com/npoxon/pallas", rev = "9c8ab1e428c96475c25e877683eaefd1cd080594" }
+pallas-network = { git = "https://github.com/npoxon/pallas", rev = "9c8ab1e428c96475c25e877683eaefd1cd080594" }
+pallas-primitives = { git = "https://github.com/npoxon/pallas", rev = "9c8ab1e428c96475c25e877683eaefd1cd080594" }
+pallas-traverse = { git = "https://github.com/npoxon/pallas", rev = "9c8ab1e428c96475c25e877683eaefd1cd080594" }
+pallas-txbuilder = { git = "https://github.com/npoxon/pallas", rev = "9c8ab1e428c96475c25e877683eaefd1cd080594" }
+pallas-utxorpc = { git = "https://github.com/npoxon/pallas", rev = "9c8ab1e428c96475c25e877683eaefd1cd080594" }
+pallas-validate = { git = "https://github.com/npoxon/pallas", rev = "9c8ab1e428c96475c25e877683eaefd1cd080594" }
