@@ -257,24 +257,23 @@ pre-release-hook = [
 [lints.clippy]
 result_large_err = "allow"
 
-# Hotfix: ScriptNOfK's threshold is CBOR-decoded as u32 in released pallas,
-# but the ledger CDDL has typed it int64 since Allegra. A negative threshold
-# (valid, on-chain, trivially satisfied) fails to decode at all, which is
-# what stopped sync on preprod at block 5184855. Fix pending upstream at
-# https://github.com/txpipe/pallas/pull/802 (base) and
-# https://github.com/npoxon/pallas/tree/fix/native-script-n-of-k-signed-threshold
-# (this patch). Remove once a pallas release with the fix is out and this
-# crate's pallas pin is bumped past it.
+# Hotfix: ScriptNOfK's threshold is CBOR-decoded as u32 in released pallas
+# (v1.1.1), but the ledger CDDL has typed it int64 since Shelley. A negative
+# threshold (valid, on-chain, trivially satisfied) fails to decode at all,
+# which is what stopped sync on preprod at block 5184855. Fixed on pallas
+# main via github.com/txpipe/pallas/pull/803, merged 2026-09-16, but not yet
+# in a published release. Remove this patch once pallas cuts a release past
+# that commit and this crate's pallas pin is bumped to it.
 [patch.crates-io]
-pallas = { git = "https://github.com/npoxon/pallas", rev = "a2d11aa2cbfc78db2cb7c0ae8782ff172696c931" }
-pallas-addresses = { git = "https://github.com/npoxon/pallas", rev = "a2d11aa2cbfc78db2cb7c0ae8782ff172696c931" }
-pallas-codec = { git = "https://github.com/npoxon/pallas", rev = "a2d11aa2cbfc78db2cb7c0ae8782ff172696c931" }
-pallas-configs = { git = "https://github.com/npoxon/pallas", rev = "a2d11aa2cbfc78db2cb7c0ae8782ff172696c931" }
-pallas-crypto = { git = "https://github.com/npoxon/pallas", rev = "a2d11aa2cbfc78db2cb7c0ae8782ff172696c931" }
-pallas-hardano = { git = "https://github.com/npoxon/pallas", rev = "a2d11aa2cbfc78db2cb7c0ae8782ff172696c931" }
-pallas-network = { git = "https://github.com/npoxon/pallas", rev = "a2d11aa2cbfc78db2cb7c0ae8782ff172696c931" }
-pallas-primitives = { git = "https://github.com/npoxon/pallas", rev = "a2d11aa2cbfc78db2cb7c0ae8782ff172696c931" }
-pallas-traverse = { git = "https://github.com/npoxon/pallas", rev = "a2d11aa2cbfc78db2cb7c0ae8782ff172696c931" }
-pallas-txbuilder = { git = "https://github.com/npoxon/pallas", rev = "a2d11aa2cbfc78db2cb7c0ae8782ff172696c931" }
-pallas-utxorpc = { git = "https://github.com/npoxon/pallas", rev = "a2d11aa2cbfc78db2cb7c0ae8782ff172696c931" }
-pallas-validate = { git = "https://github.com/npoxon/pallas", rev = "a2d11aa2cbfc78db2cb7c0ae8782ff172696c931" }
+pallas = { git = "https://github.com/txpipe/pallas", rev = "975974908bf3e9aa0c1ed7915fd5c9643a2f3964" }
+pallas-addresses = { git = "https://github.com/txpipe/pallas", rev = "975974908bf3e9aa0c1ed7915fd5c9643a2f3964" }
+pallas-codec = { git = "https://github.com/txpipe/pallas", rev = "975974908bf3e9aa0c1ed7915fd5c9643a2f3964" }
+pallas-configs = { git = "https://github.com/txpipe/pallas", rev = "975974908bf3e9aa0c1ed7915fd5c9643a2f3964" }
+pallas-crypto = { git = "https://github.com/txpipe/pallas", rev = "975974908bf3e9aa0c1ed7915fd5c9643a2f3964" }
+pallas-hardano = { git = "https://github.com/txpipe/pallas", rev = "975974908bf3e9aa0c1ed7915fd5c9643a2f3964" }
+pallas-network = { git = "https://github.com/txpipe/pallas", rev = "975974908bf3e9aa0c1ed7915fd5c9643a2f3964" }
+pallas-primitives = { git = "https://github.com/txpipe/pallas", rev = "975974908bf3e9aa0c1ed7915fd5c9643a2f3964" }
+pallas-traverse = { git = "https://github.com/txpipe/pallas", rev = "975974908bf3e9aa0c1ed7915fd5c9643a2f3964" }
+pallas-txbuilder = { git = "https://github.com/txpipe/pallas", rev = "975974908bf3e9aa0c1ed7915fd5c9643a2f3964" }
+pallas-utxorpc = { git = "https://github.com/txpipe/pallas", rev = "975974908bf3e9aa0c1ed7915fd5c9643a2f3964" }
+pallas-validate = { git = "https://github.com/txpipe/pallas", rev = "975974908bf3e9aa0c1ed7915fd5c9643a2f3964" }
