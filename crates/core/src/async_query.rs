@@ -317,22 +317,31 @@ where
     /// Their slots are grouped before body work starts, then each group uses
     /// one blocking task under the facade's shared limiter. Results are owned;
     /// decoded blocks and body buffers are dropped inside those bounded tasks.
+    /// The slot each tx was included in, from the archive index alone. No
+    /// block body is read, so this is the cheap way to order many txs by
+    /// chain position; a tx the archive no longer knows maps to `None`.
+    pub async fn slots_by_tx_hashes(
+        &self,
+        tx_hashes: Vec<TxHash>,
+    ) -> Result<Vec<(TxHash, Option<BlockSlot>)>, DomainError> {
+        self.run_blocking(move |domain| {
+            tx_hashes
+                .into_iter()
+                .map(|tx_hash| {
+                    let slot = domain.archive().slot_by_tx_hash(tx_hash.as_slice())?;
+                    Ok((tx_hash, slot))
+                })
+                .collect::<Result<Vec<_>, DomainError>>()
+        })
+        .await
+    }
+
     async fn block_meta_by_tx_hashes(
         &self,
         tx_hashes: Vec<TxHash>,
     ) -> Result<(Vec<(TxHash, Option<BlockRefMeta>)>, usize), DomainError> {
         let requested = tx_hashes.clone();
-        let located = self
-            .run_blocking(move |domain| {
-                tx_hashes
-                    .into_iter()
-                    .map(|tx_hash| {
-                        let slot = domain.archive().slot_by_tx_hash(tx_hash.as_slice())?;
-                        Ok((tx_hash, slot))
-                    })
-                    .collect::<Result<Vec<_>, DomainError>>()
-            })
-            .await?;
+        let located = self.slots_by_tx_hashes(tx_hashes).await?;
 
         let mut fetched = HashMap::new();
         let mut groups: HashMap<BlockSlot, Vec<TxHash>> = HashMap::new();
